@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,16 +17,18 @@ import br.dev.carlos.tarefas.model.Funcionario;
 public class FuncionarioFrame {
 	
 	
-	public FuncionarioFrame() {
+	public FuncionarioFrame(JFrame tela) {
 		
-		criarTela();
+		criarTela(tela);
 	}
 	
-	private void criarTela() {
-		JFrame tela = new JFrame();
+	private void criarTela(JFrame parent) {
+		
+		
+		JDialog tela = new JDialog(parent, true);
 		tela.setSize(400, 400);
 		tela.setTitle("Cadastro de funcionarios");
-		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		tela.setLayout(null);
 		tela.setLocationRelativeTo(null);
 		
@@ -45,7 +48,12 @@ public class FuncionarioFrame {
 		txtSetor.setBounds(10, 170, 200, 30);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(10, 250, 150, 30);
+		btnSalvar.setBounds(10, 250, 150, 35);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.setBounds(170, 250, 150, 35);
+		
+		
 		
 		
 		
@@ -60,6 +68,7 @@ public class FuncionarioFrame {
 		painel.add(labelSetor);
 		painel.add(txtSetor);
 		painel.add(btnSalvar);
+		painel.add(btnSair);
 		
 		btnSalvar.addActionListener(new ActionListener() {
 			
@@ -81,6 +90,19 @@ public class FuncionarioFrame {
 				txtCargo.setText(null);
 				txtSetor.setText(null);
 				txtNome.requestFocus();
+			}
+		});
+		
+		btnSair.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(tela, "Sair do sistema?");
+				System.out.println(resposta);
+				if (resposta == 0) {
+					tela.dispose();
+				}
+				
 			}
 		});
 		
