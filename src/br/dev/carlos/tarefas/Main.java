@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.util.UUID;
 
 import br.dev.carlos.tarefas.dao.FuncionarioDAO;
+import br.dev.carlos.tarefas.gui.EscolhaFrame;
 import br.dev.carlos.tarefas.gui.FuncionarioFrame;
 import br.dev.carlos.tarefas.gui.FuncionarioListaFrame;
 import br.dev.carlos.tarefas.model.Funcionario;
@@ -22,7 +23,7 @@ public class Main {
 		//FuncionarioDAO dao = new FuncionarioDAO(null);
 		//dao.getFuncionarios();
 		
-		new FuncionarioListaFrame();
+		new EscolhaFrame();
 		//new FuncionarioFrame();
 		
 	}

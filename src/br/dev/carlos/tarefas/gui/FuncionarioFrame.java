@@ -17,12 +17,12 @@ import br.dev.carlos.tarefas.model.Funcionario;
 public class FuncionarioFrame {
 	
 	
-	public FuncionarioFrame(JFrame tela) {
+	public FuncionarioFrame(JDialog tela) {
 		
 		criarTela(tela);
 	}
 	
-	private void criarTela(JFrame parent) {
+	private void criarTela(JDialog parent) {
 		
 		
 		JDialog tela = new JDialog(parent, true);
