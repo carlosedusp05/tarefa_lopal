@@ -35,7 +35,7 @@ public class TarefasListaFrame {
 		
 		JDialog tela = new JDialog(parent, true);
 		tela.setTitle("Tabela de tarefas");
-		tela.setSize(600, 480);
+		tela.setSize(615, 480);
 		tela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		tela.setResizable(false);
 		tela.setLayout(null);
@@ -47,8 +47,10 @@ public class TarefasListaFrame {
 		labelTitulo.setForeground(new Color(100, 0, 100));
 		labelTitulo.setBounds(10, 10, 400, 40);
 		
-//		modelFuncionarios = new DefaultTableModel(colunas,1);
-//		carregarDados();
+		modelTarefas = new DefaultTableModel(colunas,1) {
+		};
+		
+	
 		
 		tabelaTarefas = new JTable(modelTarefas);
 		scroll = new JScrollPane(tabelaTarefas);
@@ -61,6 +63,7 @@ public class TarefasListaFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new CadastroTarefasFrame(tela);
 				
 			}
 		});

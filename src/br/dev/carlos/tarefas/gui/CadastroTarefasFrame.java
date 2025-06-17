@@ -1,10 +1,18 @@
 package br.dev.carlos.tarefas.gui;
 
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import br.dev.carlos.tarefas.dao.FuncionarioDAO;
+import br.dev.carlos.tarefas.model.Funcionario;
 
 public class CadastroTarefasFrame {
 
@@ -23,30 +31,30 @@ public CadastroTarefasFrame(JDialog tela) {
 		tela.setLayout(null);
 		tela.setLocationRelativeTo(null);
 		
-		JLabel labelNome = new JLabel("Nome da tarefa:");
-		labelNome.setBounds(10, 10, 150, 30);
-		JTextField txtNome = new JTextField();
-		txtNome.setBounds(10, 40, 200, 30);
+		JLabel labelNomeTarefa = new JLabel("Nome da tarefa:");
+		labelNomeTarefa.setBounds(10, 10, 150, 30);
+		JTextField txtNomeTarefa = new JTextField();
+		txtNomeTarefa.setBounds(10, 40, 200, 30);
 		
-		JLabel labelNome = new JLabel("Descrição:");
-		labelNome.setBounds(10, 10, 150, 30);
-		JTextField txtNome = new JTextField();
-		txtNome.setBounds(10, 40, 200, 30);
+		JLabel labelDescricao = new JLabel("Descrição:");
+		labelDescricao.setBounds(10, 10, 150, 30);
+		JTextField txtDescricao = new JTextField();
+		txtDescricao.setBounds(10, 40, 200, 30);
 		
-		JLabel labelResponsável = new JLabel("Responsável:");
-		labelResponsável.setBounds(10, 75, 150, 30);
-		JTextField txtResponsável = new JTextField();
-		txtResponsável.setBounds(10, 105, 150, 30);
+		JLabel labelResponsavel = new JLabel("Responsável:");
+		labelResponsavel.setBounds(10, 75, 150, 30);
+		JTextField txtResponsavel = new JTextField();
+		txtResponsavel.setBounds(10, 105, 150, 30);
 		
-		JLabel labelSetor = new JLabel("Data de início:");
-		labelSetor.setBounds(10, 140, 150, 30);
-		JTextField txtSetor = new JTextField();
-		txtSetor.setBounds(10, 170, 200, 30);
+		JLabel labelDataInicio = new JLabel("Data de início:");
+		labelDataInicio.setBounds(10, 140, 150, 30);
+		JTextField txtDataInicio = new JTextField();
+		txtDataInicio.setBounds(10, 170, 200, 30);
 		
-		JLabel labelNome = new JLabel("Prazo:");
-		labelNome.setBounds(10, 10, 150, 30);
-		JTextField txtNome = new JTextField();
-		txtNome.setBounds(10, 40, 200, 30);
+		JLabel labelPrazo = new JLabel("Prazo:");
+		labelPrazo.setBounds(10, 10, 150, 30);
+		JTextField txtPrazo = new JTextField();
+		txtPrazo.setBounds(10, 40, 200, 30);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(10, 250, 150, 35);
@@ -54,5 +62,42 @@ public CadastroTarefasFrame(JDialog tela) {
 		JButton btnSair = new JButton("Sair");
 		btnSair.setBounds(170, 250, 150, 35);	
 	
+		
+		Container painel = tela.getContentPane();
+		painel.add(labelNomeTarefa);
+		painel.add(txtNomeTarefa);
+		painel.add(labelDescricao);
+		painel.add(txtDescricao);
+		painel.add(labelResponsavel);
+		painel.add(txtResponsavel);
+		painel.add(labelDataInicio);
+		painel.add(txtDataInicio);
+		painel.add(labelPrazo);
+		painel.add(txtPrazo);
+		painel.add(btnSalvar);
+		painel.add(btnSair);
+		
+		btnSalvar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnSair.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(tela, "Sair do sistema?");
+				System.out.println(resposta);
+				if (resposta == 0) {
+					tela.dispose();
+				}
+				
+			}
+		});
+		
+		tela.setVisible(true);
 	}
 }

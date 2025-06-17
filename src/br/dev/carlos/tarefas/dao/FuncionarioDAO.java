@@ -18,7 +18,8 @@ public class FuncionarioDAO {
 	private FileReader fr;
 	private BufferedReader br;
 	
-	private String arquivo = "/Users/25132872/eclipse-workspace/tarefas/funcionarios.csv";
+	//private String arquivo = "/Users/25132872/eclipse-workspace/tarefas/funcionarios.csv";
+	private String arquivo = "C:\\Users\\25132872\\Desktop\\tarefas\\funcionarios.csv";
 	
 	
 	public FuncionarioDAO(Funcionario funcionario) {
