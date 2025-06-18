@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,6 +16,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.dev.carlos.tarefas.dao.FuncionarioDAO;
+import br.dev.carlos.tarefas.dao.TarefaDAO;
+import br.dev.carlos.tarefas.model.Funcionario;
+import br.dev.carlos.tarefas.model.Tarefa;
+
 public class TarefasListaFrame {
 
 	private JLabel labelTitulo;
@@ -24,7 +30,7 @@ public class TarefasListaFrame {
 	private JButton btnNovo;
 	private JButton btnSair;
 	
-	private String[] colunas = {"NOME", "DESCRIÇÃO", "RESPONSÁVEL", "DATA DE INÍCIO", "PRAZO", "STATUS", "DATA DE ENTREGA"};
+	private String[] colunas = {"CÓDIGO","NOME", "RESPONSÁVEL"};
 	
 	public TarefasListaFrame(JFrame tela) {
 		criarTela(tela);
@@ -47,8 +53,8 @@ public class TarefasListaFrame {
 		labelTitulo.setForeground(new Color(100, 0, 100));
 		labelTitulo.setBounds(10, 10, 400, 40);
 		
-		modelTarefas = new DefaultTableModel(colunas,1) {
-		};
+		modelTarefas = new DefaultTableModel(colunas,1);
+		carregarDados();
 		
 	
 		
@@ -64,7 +70,7 @@ public class TarefasListaFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new CadastroTarefasFrame(tela);
-				
+				carregarDados();
 			}
 		});
 		
@@ -93,4 +99,21 @@ public class TarefasListaFrame {
 		tela.setVisible(true);
 	}
 	
+	private Object[][] carregarDados() {
+		TarefaDAO dao = new TarefaDAO(null);
+		List<Tarefa> tarefas = dao.getTarefas();
+		
+		Object[][] dados = new Object [tarefas.size()][3];
+		
+		int i =0;
+		for(Tarefa tr : tarefas) {
+			dados [i][0] = tr.getCodigo();
+			dados [i][1] = tr.getNome();
+			dados [i][2] = tr.getResponsavel();
+			i++;
+	
+		}
+		modelTarefas.setDataVector(dados, colunas);
+		return dados;
+	}
 }

@@ -32,32 +32,26 @@ public class FuncionarioFrame {
 		tela.setLayout(null);
 		tela.setLocationRelativeTo(null);
 		
-		JLabel labelNome = new JLabel("Nome");
+		JLabel labelNome = new JLabel("Nome:");
 		labelNome.setBounds(10, 10, 150, 30);
 		JTextField txtNome = new JTextField();
 		txtNome.setBounds(10, 40, 200, 30);
 		
-		JLabel labelCargo = new JLabel("Cargo");
+		JLabel labelCargo = new JLabel("Cargo:");
 		labelCargo.setBounds(10, 75, 150, 30);
 		JTextField txtCargo = new JTextField();
 		txtCargo.setBounds(10, 105, 150, 30);
 		
-		JLabel labelSetor = new JLabel("Setor");
+		JLabel labelSetor = new JLabel("Setor:");
 		labelSetor.setBounds(10, 140, 150, 30);
 		JTextField txtSetor = new JTextField();
 		txtSetor.setBounds(10, 170, 200, 30);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		JButton btnSalvar = new JButton("Salvar:");
 		btnSalvar.setBounds(10, 250, 150, 35);
 		
-		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(170, 250, 150, 35);
-		
-		
-		
-		
-		
-		
+		JButton btnSair = new JButton("Sair:");
+		btnSair.setBounds(170, 250, 150, 35);	
 		
 		
 		Container painel = tela.getContentPane();
